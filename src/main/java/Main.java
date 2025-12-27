@@ -18,6 +18,18 @@ public class Main {
                 }
                 System.out.println(res);
             }
+            else if(in[0].equals("type")){
+                if(in.length < 2){
+                    System.out.println("type: missing operand");
+                    continue;
+                }
+                if(in[1] != "echo" || in[1] != "type" || in[1] != "exit"){
+                    System.out.println(in[1] + ": command not found");
+                }
+                else {
+                    System.out.println(in[1] + "is a shell builtin");
+                }
+            }
             else{
                 System.out.println(input + ": command not found");
             }
