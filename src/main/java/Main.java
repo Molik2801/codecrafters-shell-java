@@ -18,7 +18,9 @@ public class Main {
                 }
                 System.out.println(res);
             }
-            System.out.println(input + ": command not found");
+            else{
+                System.out.println(input + ": command not found");
+            }
         }
     }
 }
