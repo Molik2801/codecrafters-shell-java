@@ -23,7 +23,7 @@ public class Main {
                     System.out.println("type: missing operand");
                     continue;
                 }
-                if((in[1] != "echo" )|| (in[1] != "type") || (in[1] != "exit")){
+                if((!in[1].equals("echo"))|| (!in[1].equals("type")) || (!in[1].equals("exit"))){
                     System.out.println(in[1] + ": command not found");
                 }
                 else {
