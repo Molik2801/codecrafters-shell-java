@@ -6,7 +6,7 @@ public class Main {
             System.out.print("$ ");
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
-            String[] in = input.split("input");
+            String[] in = input.split(" ");
             if(in[0].equals("exit")){ 
                 break;
             }
