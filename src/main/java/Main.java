@@ -61,7 +61,10 @@ public class Main {
                     System.out.println("cd: " + nex + ": No such file or directory");
                 }
                 else{
-                    curDir = nex;
+                    ProcessBuilder pb = new ProcessBuilder(in[0]);
+                    pb.directory(curDir.toFile());
+                    Process p = pb.start();
+                    int exitcode = p.waitFor();
                 }
             }
             else{
