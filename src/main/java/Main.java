@@ -52,8 +52,7 @@ public class Main {
                 }
             }
             else if(in[0].equals("pwd")){
-                String dir = System.getProperty("user.dir");
-                System.out.println(dir);
+                System.out.println(curDir);
             }
             else if(in[0].equals("cd")){
                 Path nex = curDir.resolve(Path.of(in[1])).normalize();
