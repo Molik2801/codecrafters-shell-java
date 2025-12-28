@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         String cwd[] = System.getenv("PATH").split(":");
+        Path curDir = Path.of(System.getProperty("user.dir"));
         while(true){
             System.out.print("$ ");
             Scanner scanner = new Scanner(System.in);
@@ -55,16 +56,12 @@ public class Main {
                 System.out.println(dir);
             }
             else if(in[0].equals("cd")){
-                Path curDir = Path.of(System.getProperty("user.dir"));
                 Path nex = curDir.resolve(Path.of(in[1])).normalize();
                 if(!Files.isDirectory(nex)){
                     System.out.println("cd: " + nex + ": No such file or directory");
                 }
                 else{
-                    ProcessBuilder pb = new ProcessBuilder(in[0]);
-                    pb.directory(curDir.toFile());
-                    Process p = pb.start();
-                    int exitcode = p.waitFor();
+                    curDir = nex;
                 }
             }
             else{
