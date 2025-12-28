@@ -56,6 +56,9 @@ public class Main {
             }
             else if(in[0].equals("cd")){
                 Path nex = curDir.resolve(Path.of(in[1])).normalize();
+                if(in[1].equals("~")){
+                    nex = curDir.resolve(Path.of(System.getenv("HOME")));
+                }
                 if(!Files.isDirectory(nex)){
                     System.out.println("cd: " + nex + ": No such file or directory");
                 }
