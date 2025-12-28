@@ -31,7 +31,7 @@ public class Main {
                     System.out.println("type: missing operand");
                     continue;
                 }
-                if((in[1].equals("echo")) || (in[1].equals("type")) || (in[1].equals("exit"))){
+                if((in[1].equals("echo")) || (in[1].equals("type")) || (in[1].equals("exit")) || (in[1].equals("pwd"))){
                     System.out.println(in[1] + " is a shell builtin");
                 }
                 else {
