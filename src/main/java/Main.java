@@ -56,15 +56,13 @@ public class Main {
             }
             else if(in[0].equals("cd")){
                 Path curDir = Path.of(System.getProperty("user.dir"));
-                curDir = curDir.resolve(Path.of(in[1])).normalize();
-                if(!Files.isDirectory(curDir)){
-                    System.out.println("cd: " + curDir + ": No such file or directory");
+                Path nex = curDir.resolve(Path.of(in[1])).normalize();
+                if(!Files.isDirectory(nex)){
+                    System.out.println("cd: " + nex + ": No such file or directory");
                 }
-                // else{
-                //     ProcessBuilder pb = new ProcessBuilder();
-                //     pb.directory(curDir.toFile());
-                //     Process p = pb.start();
-                // }
+                else{
+                    curDir = nex;
+                }
             }
             else{
                 String cmd = in[0];
