@@ -50,6 +50,10 @@ public class Main {
                     }
                 }
             }
+            else if(in[0].equals("pwd")){
+                String dir = System.getProperty("user.dir");
+                System.out.println(dir);
+            }
             else{
                 String cmd = in[0];
                 boolean ok = false;
