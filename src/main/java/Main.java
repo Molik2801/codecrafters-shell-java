@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -60,6 +62,13 @@ public class Main {
                             arg.add(in[i]);
                         }
                         Process process = new ProcessBuilder(arg).start();
+                        try(BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))){
+                            String line;
+                            while((line = reader.readLine()) != null){
+                                System.out.println(line);
+                            }
+                        }
+                        int exitcode = process.waitFor();
                         ok = true;
                         break;
                     }
