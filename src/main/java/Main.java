@@ -60,11 +60,11 @@ public class Main {
                 if(!Files.isDirectory(curDir)){
                     System.out.println("cd: " + curDir + ": No such file or directory");
                 }
-                else{
-                    ProcessBuilder pb = new ProcessBuilder();
-                    pb.directory(curDir.toFile());
-                    Process p = pb.start();
-                }
+                // else{
+                //     ProcessBuilder pb = new ProcessBuilder();
+                //     pb.directory(curDir.toFile());
+                //     Process p = pb.start();
+                // }
             }
             else{
                 String cmd = in[0];
