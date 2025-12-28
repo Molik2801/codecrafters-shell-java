@@ -1,6 +1,8 @@
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -47,7 +49,24 @@ public class Main {
                 }
             }
             else{
-                System.out.println(input + ": not found");
+                String cmd = in[0];
+                boolean ok = false;
+                List<String> arg = new ArrayList<>();
+                for(String dir : cwd){
+                    Path p = Path.of(dir , cmd);
+                    if(Files.exists(p) && Files.isExecutable(p)){
+                        arg.add(p.toString());
+                        for(int i = 1 ; i < in.length ; i++){
+                            arg.add(in[i]);
+                        }
+                        Process process = new ProcessBuilder(arg).start();
+                        ok = true;
+                        break;
+                    }
+                }
+                if(!ok){
+                    System.out.println(input + ": not found");
+                }
             }
         }
     }
