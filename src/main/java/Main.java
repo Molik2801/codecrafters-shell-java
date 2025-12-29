@@ -1,9 +1,9 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +15,9 @@ public class Main {
             System.out.print("$ ");
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
-            String[] in = input.split(" ");
+            Parser parser = new Parser();
+            String[] in = parser.parse(input).toArray(new String[0]);
+            // System.out.println(Arrays.toString(in));
             if(in[0].equals("exit")){ 
                 break;
             }
