@@ -28,11 +28,11 @@ public class Parser {
                 }
             }
             else if(input.charAt(i) == '\\'){
-                if(doubleQuote == 1){
+                if((doubleQuote == 1) && ((input.charAt(i+1) == '\\') || (input.charAt(i+1) == '\"'))){
                     temp += input.charAt(i+1);
                     i++;
                 }
-                else if(singleQuote == 1){
+                else if((doubleQuote == 1) || (singleQuote == 1)){
                     temp += input.charAt(i);
                 }
                 else{
