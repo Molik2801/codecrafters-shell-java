@@ -37,7 +37,10 @@ public class Parser {
                 }
             }
             else if(input.charAt(i) == '\"'){
-                if(doubleQuote == 0){
+                if(singleQuote == 1){
+                    temp += input.charAt(i);
+                }
+                else if(doubleQuote == 0){
                     singleQuote = -1;
                     doubleQuote = 1;
                 }
