@@ -29,7 +29,7 @@ public class Parser {
             }
             else if(input.charAt(i) == '\\'){
                 if(doubleQuote == 1 || singleQuote == 1){
-                    continue;
+                    temp += input.charAt(i);
                 }
                 else{
                     temp += input.charAt(i+1);
