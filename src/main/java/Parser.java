@@ -28,8 +28,13 @@ public class Parser {
                 }
             }
             else if(input.charAt(i) == '\\'){
-                temp += input.charAt(i+1);
-                i++;
+                if(doubleQuote == 1 || singleQuote == 1){
+                    continue;
+                }
+                else{
+                    temp += input.charAt(i+1);
+                    i++;
+                }
             }
             else if(input.charAt(i) == '\"'){
                 if(doubleQuote == 0){
