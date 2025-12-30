@@ -5,7 +5,8 @@ public class Parser {
     public List<String> parse(String input){
         List<String> parsedInput = new ArrayList<>();
         int gap = 0;
-        int quo = 0;
+        int singleQuote = 0;
+        int doubleQuote = 0;
         String temp = "";
         for(int i = 0 ; i < input.length() ; i++){
             if(input.charAt(i) == ' '){
@@ -15,7 +16,7 @@ public class Parser {
                     temp = "";
                 }
                 else{
-                    if(quo == 1){
+                    if((singleQuote == 1) || (doubleQuote == 1)){
                         temp += ' ';
                     }
                     else{
@@ -26,8 +27,23 @@ public class Parser {
                     }
                 }
             }
+            else if(input.charAt(i) == '\"'){
+                if(doubleQuote == 0){
+                    singleQuote = -1;
+                    doubleQuote = 1;
+                }
+                else{
+                    singleQuote = 0;
+                    doubleQuote = 0;
+                }
+            }
             else if(input.charAt(i) == '\''){
-                quo = quo ^ 1;
+                if(singleQuote == -1){
+                    temp += input.charAt(i);
+                }
+                else{
+                    singleQuote = singleQuote ^ 1;
+                }
             }
             else{
                 temp += input.charAt(i);
@@ -37,3 +53,5 @@ public class Parser {
         return parsedInput;
     }
 }
+
+//"helo 'world' "
