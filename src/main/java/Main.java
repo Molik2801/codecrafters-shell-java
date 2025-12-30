@@ -17,7 +17,7 @@ public class Main {
             String input = scanner.nextLine();
             Parser parser = new Parser();
             String[] in = parser.parse(input).toArray(new String[0]);
-            // System.out.println(Arrays.toString(in));
+            // System.out.println(Arrays.toString(input.split("")));
             if(in[0].equals("exit")){ 
                 break;
             }

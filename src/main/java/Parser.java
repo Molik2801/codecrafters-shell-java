@@ -27,6 +27,10 @@ public class Parser {
                     }
                 }
             }
+            else if(input.charAt(i) == '\\'){
+                temp += input.charAt(i+1);
+                i++;
+            }
             else if(input.charAt(i) == '\"'){
                 if(doubleQuote == 0){
                     singleQuote = -1;
