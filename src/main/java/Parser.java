@@ -10,20 +10,13 @@ public class Parser {
         String temp = "";
         for(int i = 0 ; i < input.length() ; i++){
             if(input.charAt(i) == ' '){
-                if(gap == 100){
-                    gap = 1;
-                    parsedInput.add(temp);
-                    temp = "";
+                if((singleQuote == 1) || (doubleQuote == 1)){
+                    temp += ' ';
                 }
                 else{
-                    if((singleQuote == 1) || (doubleQuote == 1)){
-                        temp += ' ';
-                    }
-                    else{
-                        if(!temp.isEmpty()){
-                            parsedInput.add(temp);
-                            temp = "";
-                        }
+                    if(!temp.isEmpty()){
+                        parsedInput.add(temp);
+                        temp = "";
                     }
                 }
             }
