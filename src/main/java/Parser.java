@@ -10,7 +10,7 @@ public class Parser {
         String temp = "";
         for(int i = 0 ; i < input.length() ; i++){
             if(input.charAt(i) == ' '){
-                if(gap == 0){
+                if(gap == 100){
                     gap = 1;
                     parsedInput.add(temp);
                     temp = "";
@@ -70,4 +70,3 @@ public class Parser {
     }
 }
 
-//"helo 'world' "
