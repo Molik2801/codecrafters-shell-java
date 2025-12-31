@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,12 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
             Parser parser = new Parser();
-            String[] in = parser.parse(input).toArray(new String[0]);
+            ParserResult result = parser.parse(input);
+            String[] in = result.tokens.toArray(new String[0]);
+            String redir = result.redirection;
+
+            Path file = Path.of(redir);
+            Files.createDirectories(file.getParent());
             // System.out.println(Arrays.toString(input.split("")));
             if(in[0].equals("exit")){ 
                 break;
@@ -27,7 +33,12 @@ public class Main {
                     res += in[i];
                     res += " ";
                 }
-                System.out.println(res);
+                if(!redir.isEmpty()){
+                    Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
+                }
+                else{
+                    System.out.println(res);
+                }
             }
             else if(in[0].equals("type")){
                 if(in.length < 2){
