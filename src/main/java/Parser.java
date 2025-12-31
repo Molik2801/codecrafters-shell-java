@@ -11,7 +11,7 @@ public class Parser {
         String temp = "";
         int redir = -1;
         for(int i = 0 ; i < input.length() ; i++){
-            if((input.charAt(i) == '>') || ((temp.charAt(i) == '1') && (temp.charAt(i+1) == '>'))){
+            if((input.charAt(i) == '>') || ((i+1 < input.length()) && (temp.charAt(i) == '1') && (temp.charAt(i+1) == '>'))){
                 redir = i+1;
             }
             if(input.charAt(i) == ' '){
