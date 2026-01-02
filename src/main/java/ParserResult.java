@@ -2,10 +2,10 @@ import java.util.List;
 
 public class ParserResult {
     public final List<String> tokens;
-    public final String redirection;
+    public String redirection = "";
 
-    public ParserResult(List<String> token , String redirection){
+    public ParserResult(List<String> token , String redirections){
         this.tokens = token;
-        this.redirection = redirection;
+        this.redirection = redirections;
     }
 }

@@ -5,16 +5,20 @@ public class Parser {
     public ParserResult parse(String input){
         List<String> parsedInput = new ArrayList<>();
         String redirection = "";
-        int gap = 0;
         int singleQuote = 0;
         int doubleQuote = 0;
         String temp = "";
         int redir = -1;
         for(int i = 0 ; i < input.length() ; i++){
-            if((input.charAt(i) == '>') || ((i+1 < input.length()) && (temp.charAt(i) == '1') && (temp.charAt(i+1) == '>'))){
+            if(input.charAt(i) == '>'){
                 redir = i+1;
+                break;
             }
-            if(input.charAt(i) == ' '){
+            if((i+1 < input.length()) && (input.charAt(i) == '1') && (input.charAt(i+1) == '>')){
+                redir = i+2;
+                break;
+            }
+            else if(input.charAt(i) == ' '){
                 if((singleQuote == 1) || (doubleQuote == 1)){
                     temp += ' ';
                 }
@@ -65,8 +69,8 @@ public class Parser {
         }
         if(!temp.isEmpty())parsedInput.add(temp);
         if(redir != -1){
-            while(temp.charAt(redir) != ' '){
-                redirection += temp.charAt(redir);
+            while(redir < input.length()){
+                redirection += input.charAt(redir);
                 redir++;
             }
         }

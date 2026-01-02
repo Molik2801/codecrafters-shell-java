@@ -21,8 +21,7 @@ public class Main {
             String[] in = result.tokens.toArray(new String[0]);
             String redir = result.redirection;
 
-            Path file = Path.of(redir);
-            Files.createDirectories(file.getParent());
+            
             // System.out.println(Arrays.toString(input.split("")));
             if(in[0].equals("exit")){ 
                 break;
@@ -34,6 +33,8 @@ public class Main {
                     res += " ";
                 }
                 if(!redir.isEmpty()){
+                    Path file = Path.of(redir);
+                    Files.createDirectories(file.getParent());
                     Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
                 }
                 else{
