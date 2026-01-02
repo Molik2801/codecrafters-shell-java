@@ -97,6 +97,7 @@ public class Main {
                         if(!redir.isEmpty()){
                             Path filePath = Path.of(curDir.toString(),redir).normalize();
                             Files.createDirectories(filePath.getParent());
+                            pb.redirectErrorStream(true);
                             pb.redirectOutput(filePath.toFile());
                             Process process = pb.start();
                             int exitcode = process.waitFor();
