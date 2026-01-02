@@ -86,7 +86,7 @@ public class Main {
                 for(String dir : cwd){
                     Path p = Path.of(dir , cmd);
                     if(Files.exists(p) && Files.isExecutable(p)){
-                        arg.add(cmd);
+                        arg.add(p.toString());
                         for(int i = 1 ; i < in.length ; i++){
                             arg.add(in[i]);
                         }
@@ -96,6 +96,9 @@ public class Main {
                         if(!redir.isEmpty()){
                             pb.redirectOutput(Path.of(redir).toFile());
                             Process process = pb.start();
+                            int exitcode = process.waitFor();
+                            ok = true;
+                            break;
                         }
                         else{
                             Process process = pb.start();
