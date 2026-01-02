@@ -94,7 +94,7 @@ public class Main {
                         pb.directory(curDir.toFile());
 
                         if(!redir.isEmpty()){
-                            Path file = Path.of(redir);
+                            Path file = Path.of(curDir.toString(),redir).normalize();
                             Files.createDirectories(file.getParent());
                             pb.redirectOutput(file.toFile());
                             Process process = pb.start();
