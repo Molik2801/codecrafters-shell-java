@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -94,9 +95,13 @@ public class Main {
                         pb.directory(curDir.toFile());
 
                         if(!redir.isEmpty()){
-                            Path file = Path.of(curDir.toString(),redir).normalize();
-                            Files.createDirectories(file.getParent());
-                            pb.redirectOutput(file.toFile());
+                            Path filePath = Path.of(curDir.toString(),redir).normalize();
+                            Files.createDirectories(filePath.getParent());
+                            File file = filePath.toFile();
+                            if(!Files.exists(filePath)){
+                                file = new File(filePath.toString());
+                            }
+                            pb.redirectOutput(file);
                             Process process = pb.start();
                             int exitcode = process.waitFor();
                             ok = true;
