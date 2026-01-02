@@ -33,7 +33,9 @@ public class Main {
                     res += " ";
                 }
                 if(!redir.isEmpty()){
-                    Path file = Path.of(redir);
+                    // System.out.println(redir);
+                    Path file = Path.of(curDir.toString() , redir).normalize();
+                    // System.out.println(file);
                     Files.createDirectories(file.getParent());
                     Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
                 }
