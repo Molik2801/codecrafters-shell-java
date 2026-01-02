@@ -86,11 +86,11 @@ public class Main {
                 for(String dir : cwd){
                     Path p = Path.of(dir , cmd);
                     if(Files.exists(p) && Files.isExecutable(p)){
-                        arg.add(cmd);
+                        arg.add(p.toString());
                         for(int i = 1 ; i < in.length ; i++){
                             arg.add(in[i]);
                         }
-                        ProcessBuilder pb = new ProcessBuilder(p.toString());
+                        ProcessBuilder pb = new ProcessBuilder(arg);
                         pb.directory(curDir.toFile());
 
                         if(!redir.isEmpty()){
