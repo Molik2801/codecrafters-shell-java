@@ -75,6 +75,7 @@ public class Parser {
             }
         }
 
+        redirection = redirection.trim();
         if (redirection.startsWith("\"") && redirection.endsWith("\"")) {
             redirection = redirection.substring(1, redirection.length() - 1);
         }

@@ -21,6 +21,8 @@ public class Main {
             String[] in = result.tokens.toArray(new String[0]);
             String redir = result.redirection;
 
+            // System.out.println("REDIR=[" + redir + "]");
+
             
             // System.out.println(Arrays.toString(input.split("")));
             if(in[0].equals("exit")){ 
