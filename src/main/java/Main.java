@@ -39,7 +39,12 @@ public class Main {
                     Path file = curDir.resolve(redir).normalize();
                     // System.out.println(file);
                     Files.createDirectories(file.getParent());
-                    Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
+                    if(std == 2){
+                        System.out.println(res);
+                    }
+                    else{
+                        Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
+                    }
                 }
                 else{
                     System.out.println(res);
