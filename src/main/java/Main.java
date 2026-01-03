@@ -20,7 +20,7 @@ public class Main {
             ParserResult result = parser.parse(input);
             String[] in = result.tokens.toArray(new String[0]);
             String redir = result.redirection;
-
+            int std = result.std;
             // System.out.println("REDIR=[" + redir + "]");
 
             
@@ -101,8 +101,14 @@ public class Main {
                         if(!redir.isEmpty()){
                             Path filePath = curDir.resolve(redir).normalize();
                             Files.createDirectories(filePath.getParent());
-                            pb.redirectOutput(filePath.toFile());
-                            pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+                            if(std == 2){
+                                pb.redirectError(filePath.toFile());
+                                pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+                            }
+                            else{
+                                pb.redirectOutput(filePath.toFile());
+                                pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+                            }
                             Process process = pb.start();
                             int exitcode = process.waitFor();
                             ok = true;
