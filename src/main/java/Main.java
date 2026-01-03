@@ -34,7 +34,7 @@ public class Main {
                 }
                 if(!redir.isEmpty()){
                     // System.out.println(redir);
-                    Path file = Path.of(curDir.toString() , redir).normalize();
+                    Path file = curDir.resolve(redir).normalize();
                     // System.out.println(file);
                     Files.createDirectories(file.getParent());
                     Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
@@ -97,7 +97,7 @@ public class Main {
                         pb.directory(curDir.toFile());
 
                         if(!redir.isEmpty()){
-                            Path filePath = Path.of(curDir.toString(),redir).normalize();
+                            Path filePath = curDir.resolve(redir).normalize();
                             Files.createDirectories(filePath.getParent());
                             pb.redirectErrorStream(true);
                             pb.redirectOutput(filePath.toFile());
