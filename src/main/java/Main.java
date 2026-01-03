@@ -38,11 +38,14 @@ public class Main {
                     // System.out.println(redir);
                     Path file = curDir.resolve(redir).normalize();
                     // System.out.println(file);
+                    Files.createDirectories(file.getParent());
+                    if(Files.notExists(file)){
+                        Files.createFile(file);
+                    }
                     if(std == 2){
                         System.out.println(res);
                     }
                     else{
-                        Files.createDirectories(file.getParent());
                         Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
                     }
                 }
@@ -105,12 +108,12 @@ public class Main {
 
                         if(!redir.isEmpty()){
                             Path filePath = curDir.resolve(redir).normalize();
+                            Files.createDirectories(filePath.getParent());
                             if(std == 2){
                                 pb.redirectError(filePath.toFile());
                                 pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
                             }
                             else{
-                                Files.createDirectories(filePath.getParent());
                                 pb.redirectOutput(filePath.toFile());
                                 pb.redirectError(ProcessBuilder.Redirect.INHERIT);
                             }
