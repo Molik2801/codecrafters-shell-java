@@ -75,6 +75,12 @@ public class Parser {
             }
         }
 
+        if (redirection.startsWith("\"") && redirection.endsWith("\"")) {
+            redirection = redirection.substring(1, redirection.length() - 1);
+        }
+        if (redirection.startsWith("\'") && redirection.endsWith("\'")) {
+            redirection = redirection.substring(1, redirection.length() - 1);
+        }
         ParserResult result = new ParserResult(parsedInput, redirection);
         return result;
     }
