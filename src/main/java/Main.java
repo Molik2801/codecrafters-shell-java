@@ -91,7 +91,7 @@ public class Main {
                 for(String dir : cwd){
                     Path p = Path.of(dir , cmd);
                     if(Files.exists(p) && Files.isExecutable(p)){
-                        arg.add(p.toString());
+                        arg.add(p.getFileName().toString());
                         for(int i = 1 ; i < in.length ; i++){
                             arg.add(in[i]);
                         }
