@@ -22,7 +22,7 @@ public class Main {
             String redir = result.redirection;
             int std = result.std;
             String Action = result.Action;
-            // System.out.println("REDIR=[" + redir + "]");
+            System.out.println(Action);
 
             
             // System.out.println(Arrays.toString(input.split("")));
