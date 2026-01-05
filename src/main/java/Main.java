@@ -129,7 +129,7 @@ public class Main {
                                     pb.redirectOutput(filePath.toFile());
                                 }
                                 else{
-                                    pb.redirectError(ProcessBuilder.Redirect.appendTo(filePath.toFile()));
+                                    pb.redirectOutput(ProcessBuilder.Redirect.appendTo(filePath.toFile()));
                                 }
                                 pb.redirectError(ProcessBuilder.Redirect.INHERIT);
                             }
