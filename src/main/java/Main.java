@@ -35,6 +35,7 @@ public class Main {
                     res += in[i];
                     res += " ";
                 }
+                res += "\n";
                 if(!redir.isEmpty()){
                     // System.out.println(redir);
                     Path file = curDir.resolve(redir).normalize();
