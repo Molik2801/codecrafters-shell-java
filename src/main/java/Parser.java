@@ -10,14 +10,28 @@ public class Parser {
         String temp = "";
         int redir = -1;
         int std = 0;
+        String Action = "";
         for(int i = 0 ; i < input.length() ; i++){
             if(input.charAt(i) == '>'){
                 redir = i+1;
+                Action = "Redirect";
                 break;
             }
             if((i+1 < input.length()) && ((input.charAt(i) >= '1') && (input.charAt(i) <= '9')) && (input.charAt(i+1) == '>')){
                 redir = i+2;
                 std = input.charAt(i) - '0';
+                Action = "Redirect";
+                break;
+            }
+            if((i+1 < input.length()) && (input.charAt(i) == '>') && (input.charAt(i+1) == '>')){
+                redir = i+2;
+                Action = "Append";
+                break;
+            }
+            if((i+2 < input.length()) && (input.charAt(i) <= '9') && (input.charAt(i) >= '1') && (input.charAt(i+1) == '>') && (input.charAt(i+2) == '>')){
+                redir = i+3;
+                std = input.charAt(i) - '0';
+                Action = "Append";
                 break;
             }
             else if(input.charAt(i) == ' '){
@@ -84,7 +98,7 @@ public class Parser {
         if (redirection.startsWith("\'") && redirection.endsWith("\'")) {
             redirection = redirection.substring(1, redirection.length() - 1);
         }
-        ParserResult result = new ParserResult(parsedInput, redirection , std);
+        ParserResult result = new ParserResult(parsedInput, redirection , std , Action);
         return result;
     }
 }

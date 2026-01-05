@@ -21,6 +21,7 @@ public class Main {
             String[] in = result.tokens.toArray(new String[0]);
             String redir = result.redirection;
             int std = result.std;
+            String Action = result.Action;
             // System.out.println("REDIR=[" + redir + "]");
 
             
@@ -46,7 +47,12 @@ public class Main {
                         System.out.println(res);
                     }
                     else{
-                        Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
+                        if(Action == "Redirect"){
+                            Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
+                        }
+                        else{
+                            Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.APPEND);
+                        }
                     }
                 }
                 else{
@@ -110,11 +116,21 @@ public class Main {
                             Path filePath = curDir.resolve(redir).normalize();
                             Files.createDirectories(filePath.getParent());
                             if(std == 2){
-                                pb.redirectError(filePath.toFile());
+                                if(Action == "Redirect"){
+                                    pb.redirectError(filePath.toFile());
+                                }
+                                else{
+                                    pb.redirectError(ProcessBuilder.Redirect.appendTo(filePath.toFile()));
+                                }
                                 pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
                             }
                             else{
-                                pb.redirectOutput(filePath.toFile());
+                                if(Action == "Redirect"){
+                                    pb.redirectOutput(filePath.toFile());
+                                }
+                                else{
+                                    pb.redirectError(ProcessBuilder.Redirect.appendTo(filePath.toFile()));
+                                }
                                 pb.redirectError(ProcessBuilder.Redirect.INHERIT);
                             }
                             Process process = pb.start();
