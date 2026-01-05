@@ -22,8 +22,8 @@ public class Main {
             String redir = result.redirection;
             int std = result.std;
             String Action = result.Action;
-            System.out.println(Action);
-
+            // System.out.println(Action);
+            // System.out.println(redir);
             
             // System.out.println(Arrays.toString(input.split("")));
             if(in[0].equals("exit")){ 
