@@ -35,7 +35,7 @@ public class Main {
                     res += in[i];
                     res += " ";
                 }
-                res += "\n";
+                
                 if(!redir.isEmpty()){
                     // System.out.println(redir);
                     Path file = curDir.resolve(redir).normalize();
@@ -49,9 +49,11 @@ public class Main {
                     }
                     else{
                         if(Action == "Redirect"){
+                            res += "\n";
                             Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.TRUNCATE_EXISTING);
                         }
                         else{
+                            res += "\n";
                             Files.writeString(file , res , StandardOpenOption.CREATE , StandardOpenOption.APPEND);
                         }
                     }
