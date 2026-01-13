@@ -34,6 +34,10 @@ public class Parser {
                 Action = "Redirect";
                 break;
             }
+            else if(input.charAt(i) == '\t'){
+                if(temp == "ech")parsedInput.add("echo");
+                if(temp == "exi")parsedInput.add("exit");
+            }
             else if(input.charAt(i) == ' '){
                 if((singleQuote == 1) || (doubleQuote == 1)){
                     temp += ' ';
