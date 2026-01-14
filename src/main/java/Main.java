@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,13 +13,17 @@ public class Main {
     public static void main(String[] args) throws Exception {
         String cwd[] = System.getenv("PATH").split(":");
         Path curDir = Path.of(System.getProperty("user.dir"));
+        Input readerLine = new Input();
+        StringBuilder sb = new StringBuilder();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         while(true){
             System.out.print("$ ");
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
+            String input = readerLine.input(bf , sb);
+            // System.out.println(input);
             Parser parser = new Parser();
             ParserResult result = parser.parse(input);
             String[] in = result.tokens.toArray(new String[0]);
+            // System.out.println(Arrays.toString(in));
             String redir = result.redirection;
             int std = result.std;
             String Action = result.Action;
