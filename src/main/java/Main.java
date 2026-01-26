@@ -14,11 +14,10 @@ public class Main {
         String cwd[] = System.getenv("PATH").split(":");
         Path curDir = Path.of(System.getProperty("user.dir"));
         Input readerLine = new Input();
-        StringBuilder sb = new StringBuilder();
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+       
         while(true){
             System.out.print("$ ");
-            String input = readerLine.input(bf , sb);
+            String input = readerLine.input();
             // System.out.println(input);
             Parser parser = new Parser();
             ParserResult result = parser.parse(input);
