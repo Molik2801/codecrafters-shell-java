@@ -16,7 +16,6 @@ public class Main {
         Input readerLine = new Input();
        
         while(true){
-            System.out.print("$ ");
             String input = readerLine.input();
             // System.out.println(input);
             Parser parser = new Parser();
