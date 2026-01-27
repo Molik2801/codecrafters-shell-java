@@ -57,8 +57,6 @@ public class Parser {
                         temp += input.charAt(i);
                     }
                 else{
-                    // System.out.println("hi2");
-                    // temp += input.charAt(i);
                     temp += input.charAt(i+1);
                     i++;
                 }
