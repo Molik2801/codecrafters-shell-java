@@ -12,6 +12,8 @@ public class Parser {
         int std = 0;
         String Action = "";
         for(int i = 0 ; i < input.length() ; i++){
+            // System.out.print(input.charAt(i));
+            // if(i == input.length() - 1)System.out.println();
             if((i+1 < input.length()) && (input.charAt(i) == '>') && (input.charAt(i+1) == '>')){
                 redir = i+2;
                 Action = "Append";
@@ -34,7 +36,7 @@ public class Parser {
                 Action = "Redirect";
                 break;
             }
-            else if(input.charAt(i) == ' '){
+            if(input.charAt(i) == ' '){
                 if((singleQuote == 1) || (doubleQuote == 1)){
                     temp += ' ';
                 }
@@ -49,11 +51,14 @@ public class Parser {
                 if((doubleQuote == 1) && ((input.charAt(i+1) == '\\') || (input.charAt(i+1) == '\"'))){
                     temp += input.charAt(i+1);
                     i++;
+                    // System.out.println("hi");
                 }
                 else if((doubleQuote == 1) || (singleQuote == 1)){
-                    temp += input.charAt(i);
-                }
+                        temp += input.charAt(i);
+                    }
                 else{
+                    // System.out.println("hi2");
+                    // temp += input.charAt(i);
                     temp += input.charAt(i+1);
                     i++;
                 }

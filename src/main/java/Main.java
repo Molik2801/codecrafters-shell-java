@@ -21,7 +21,7 @@ public class Main {
             Parser parser = new Parser();
             ParserResult result = parser.parse(input);
             String[] in = result.tokens.toArray(new String[0]);
-            // System.out.println(Arrays.toString(in));
+            // System.out.println(in[0]);
             String redir = result.redirection;
             int std = result.std;
             String Action = result.Action;
